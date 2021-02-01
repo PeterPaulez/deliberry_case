@@ -1,0 +1,47 @@
+services:
+    mysql:
+        image: mysql:5.7
+        container_name: db_mysql
+        volumes:
+            - db_mysql:/var/lib/mysql
+        restart: always
+        environment:
+            MYSQL_DATABASE: 'librarify_db'
+            # So you don't have to use root, but you can if you like
+            MYSQL_USER: 'root'
+            # You can use whatever password you like
+            MYSQL_PASSWORD: 'root'
+            # Password for root access
+            MYSQL_ROOT_PASSWORD: 'root'
+        ports:
+            # <Port exposed> : < MySQL Port running inside container>
+            - '3306:3306'
+        expose:
+            # Opens port 3306 on the container
+            - '3306'
+            # Where our data will be persisted
+        networks:
+            - symfony
+
+    web:
+        build: ./.docker
+        container_name: php_web
+        volumes:
+            - ./deliberry/:/var/www/html/
+            - ./.docker/virtualhost.conf:/etc/apache2/sites-available/000-default.conf
+        ports:
+            - '80:80'
+            - '443:443'
+        expose:
+            - '80'
+            - '443'
+        depends_on:
+            - "mysql"
+        networks:
+            - symfony
+
+volumes:
+    db_mysql:
+
+networks:
+    symfony:

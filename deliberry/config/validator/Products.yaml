@@ -1,0 +1,51 @@
+App\Controller\Api\Products\Form\Model\Dto:
+    properties:
+        name:
+            - NotBlank: ~
+            - Length:
+                min: 2
+                max: 50
+                minMessage: 'The `title` must be at least {{ limit }} characters long'
+                maxMessage: 'The `title` cannot be longer than {{ limit }} characters'
+        description:
+            - NotBlank: ~
+            - Length:
+                min: 4
+                max: 500
+                minMessage: 'The `description` must be at least {{ limit }} characters long'
+                maxMessage: 'The `description` cannot be longer than {{ limit }} characters'
+        ean:
+            - NotBlank: ~
+            - Length:
+                min: 13
+                max: 13
+                minMessage: 'The `ean` must be at least {{ limit }} characters long'
+                maxMessage: 'The `ean` cannot be longer than {{ limit }} characters'
+        sku:
+            - NotBlank: ~
+            - Length:
+                min: 4
+                max: 50
+                minMessage: 'The `sku` must be at least {{ limit }} characters long'
+                maxMessage: 'The `sku` cannot be longer than {{ limit }} characters'
+        type:
+            - NotBlank: ~
+            - Length:
+                min: 2
+                max: 12
+                minMessage: 'The `type` must be at least {{ limit }} characters long'
+                maxMessage: 'The `type` cannot be longer than {{ limit }} characters'
+        weight:
+            - NotBlank: ~
+            - Length:
+                min: 2
+                max: 6
+                minMessage: 'The `weight` must be at least {{ limit }} characters long'
+                maxMessage: 'The `weight` cannot be longer than {{ limit }} characters'
+        enabled:
+            - NotBlank: ~
+            - Length:
+                min: 1
+                max: 1
+                minMessage: 'The `enabled` must be at least {{ limit }} characters long'
+                maxMessage: 'The `enabled` cannot be longer than {{ limit }} characters'

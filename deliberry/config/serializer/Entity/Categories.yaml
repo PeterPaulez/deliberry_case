@@ -1,0 +1,8 @@
+App\Entity\Categories:
+    attributes:
+        id:
+            groups: ['product']
+        names:
+            groups: ['product']
+        description:
+            groups: ['product']

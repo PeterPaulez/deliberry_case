@@ -1,0 +1,37 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Symfony</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div id='logotipo'>
+            <img src="images/logo.png">
+            <h1>Proyecto Symfony</h1>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href=''>Index</a></li>
+            <li><a href=''>Sobre Nosotros</a></li>
+        </ul>
+    </nav>
+    <div class='barra'>
+        <span class='esquina-izquierda'></span>
+        <span class='relleno-barra'></span>
+        <span class='esquina-derecha'></span>
+    </div>
+
+    <div id='content'>
+        <div class='box'>            
+        {% block body %}{% endblock %}
+        </div>
+    </div>
+
+    <footer>
+        Symfony © by Pedro Pablo Aparicio
+    </footer>
+</body>
+</html>
