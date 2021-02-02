@@ -91,6 +91,12 @@ API: you can use with GET, POST, PUT, DELETE (PUT & DELETE needs /id) `http://lo
 1. Please, run next commands:
     
    ```
+   ~$ make test
+   ```
+   
+1. If point 1 doesn't work, run next commands:
+    
+   ```
    ~$ cd deliberry
 
    ~$ composer require --dev symfony/phpunit-bridge

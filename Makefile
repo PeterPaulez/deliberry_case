@@ -58,6 +58,9 @@ db: ## Enter into docker instance DB_MYSQL
 dbip: ## Show IP of DB_MYSQL
 	@docker inspect db_mysql | grep "IPAddress"
 
+test: ## Execute Symfony all test
+	@docker exec -it php_web bin/phpunit
+
 status: ## Show status of containers
 	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) ps
 
