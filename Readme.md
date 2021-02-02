@@ -84,3 +84,37 @@ API: you can use with GET, POST, PUT, DELETE (PUT & DELETE needs /id) `http://lo
       "enabled": "0"
    }
    ```
+
+
+# Testing the API, creating products: Empty, Wrong and correct Data tries
+
+1. Please, run next commands:
+    
+   ```
+   ~$ cd deliberry
+
+   ~$ composer require --dev symfony/phpunit-bridge
+
+   ~$ php bin/phpunit
+   ```
+
+2. You should receive an output looks like :
+    
+   ```
+   ======= TRY CREATE EMPTY -> Answer: 400 =======
+   {"code":400,"message":"Validation Failed","errors":{"children":{"name":{"errors":["This value should not be blank."]},"description":{"errors":["This value should not be blank."]},"ean":{"errors":["This value should not be blank."]},"sku":{"errors":["This value should not be blank."]},"type":{"errors":["This value should not be blank."]},"weight":{"errors":["This value should not be blank."]},"enabled":{"errors":["This value should not be blank."]},"categories":[]}}}
+
+   ======== TRY CREATE FULL -> Answer: 200 =======
+   {"id":8,"name":"Pack de 24 CocaColas","description":"Pack Ahorro 24, te sale la lata a 0.55\u20ac","ean":"1234567890123","sku":"56785550","type":"lata","weight":3.2,"enabled":false}
+
+   ===== TRY CREATE WRONG DATA -> Answer: 400 ====
+   {"code":400,"message":"Validation Failed","errors":{"children":{"name":[],"description":[],"ean":{"errors":["This value should have exactly 13 characters."]},"sku":[],"type":[],"weight":[],"enabled":[],"categories":{"children":[[],[],[]]}}}}
+
+
+   Time: 479 ms, Memory: 28.00 MB
+
+   OK (3 tests, 3 assertions)
+      1x in ControllerTest::testCreateEmpty from App\Tests\Controller\Api
+      1x in ControllerTest::testCreateData from App\Tests\Controller\Api
+      1x in ControllerTest::testCreateDataWrong from App\Tests\Controller\Api
+   ```
